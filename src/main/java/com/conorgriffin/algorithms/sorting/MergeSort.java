@@ -1,19 +1,19 @@
-package com.conorgriffin.algorithms;
+package com.conorgriffin.algorithms.sorting;
 
 /**
  * Implementation of Merge Sort
- *
+ * <p/>
  * Divide and conquer by recursively dividing the array to be sorted in half and sorting the sub-arrays before merging
  * back together.
  */
 class MergeSort {
 
-    static void sort(Comparable[] a) {
-        Comparable[] aux = new Comparable[a.length];
+    public static <T extends Comparable<T>> void sort(T[] a) {
+        T[] aux = a.clone();
         sort(a, aux, 0, a.length - 1);
     }
 
-    private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi) {
+    private static <T extends Comparable<T>> void sort(T[] a, T[] aux, int lo, int hi) {
         if (hi <= lo) return;
         int mid = lo + (hi - lo) / 2;
         sort(a, aux, lo, mid);
@@ -21,7 +21,7 @@ class MergeSort {
         merge(a, aux, lo, mid, hi);
     }
 
-    private static void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi) {
+    private static <T extends Comparable<T>> void merge(T[] a, T[] aux, int lo, int mid, int hi) {
 
         System.arraycopy(a, 0, aux, 0, a.length);
 
